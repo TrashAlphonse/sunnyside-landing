@@ -1,0 +1,98 @@
+@mixin media-tablet {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin media-mobile {
+    @media screen and (max-width: 576px) {
+        @content;
+    }
+}
+
+
+@import "1.reset";
+@import "2.variables";
+@import "3.utilities";
+@import "4.header";
+@import "5.showcase";
+@import "6.features";
+@import "7.services";
+@import "8.testimonials";
+@import "9.gallery";
+@import "10.footer";
+
+// Rulesets
+
+%bg {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+%img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+// Scroll Animations
+
+.scrolled.slide-left {
+    animation: slide-in-left 0.5s ease-in-out forwards;
+}
+
+.scrolled.slide-right {
+    animation: slide-in-right 0.5s ease-in-out forwards;
+}
+
+.scrolled.fade {
+    animation: fade-in 0.5s ease-in-out forwards;
+}
+
+@keyframes slide-in-left {
+    0% {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+}
+
+
+
+@keyframes slide-in-right {
+    0% {
+      transform: translateX(100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion) {
+
+      .js-scroll {
+          opacity: 1;
+      }
+
+      .scrolled,
+      .showcase__content__more {
+          animation: none !important;
+      }
+
+  }

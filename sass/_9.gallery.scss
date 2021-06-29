@@ -1,0 +1,33 @@
+.gallery {
+    grid-column: center-start / center-end;
+    background-color: var(--color-yellow);
+
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    overflow: hidden;
+
+    &__image {
+
+        transition: transform 0.2s ease-in;
+
+           picture {
+               img {
+                   @extend %img;
+               }
+           }
+    }
+
+    &__image:hover,
+    &__image:active {
+        transform: scale(1.2);
+    }
+
+    @include media-tablet {
+        grid-template-columns: repeat(2, 50%);
+
+        &__image:hover,
+        &__image:active {
+            transform: none;
+        }
+    }
+}

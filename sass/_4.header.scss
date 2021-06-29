@@ -1,0 +1,157 @@
+.header {
+    grid-column: center-start / center-end;
+    grid-row: 1;
+    z-index: 1;
+    align-items: center;
+    display: flex;
+    padding: var(--padding-section);
+    align-self: start;
+
+    &__hamburger {
+        display: none;
+    }
+
+    &__nav {
+        margin-left: auto;
+
+        &__list {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            overflow: hidden;
+
+            li {
+                margin-right: 5rem;
+
+                a {
+                    color: var(--color-white);
+                }
+
+            }
+
+            li:last-child {
+                margin-right: 0;
+                padding: 1rem 2rem;
+                background-color: var(--color-white);
+                border-radius: 2rem;
+                transition: all .2s ease-in-out;
+                position: relative;
+                z-index: 1;
+                
+                a {
+                    color: var(--color-desaturated-blue-dark);
+                    text-transform: uppercase;
+                    font-size: 1.5rem;
+                    font-family: 'Fraunces', serif;
+                    transition: color .2s ease-in-out;
+                }
+            }
+
+            li:last-child::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #95f0f9;
+                border-radius: inherit;
+                z-index: -1;
+                transform: scale(0);
+                transition: transform 0.2s ease-in;
+            }
+
+            li:last-child:hover::before,
+            li:last-child:active::before {
+                transform: scale(1);
+            }
+
+            li:last-child:hover a,
+            li:last-child:active a{
+               color: var(--color-white);
+            }
+        }
+    }
+
+
+    @include media-tablet {
+        &__hamburger {
+            display: block;
+            position: absolute;
+            right: 3rem;
+            top: 2rem;
+            width: 3rem;
+            height: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+
+            &__line {
+                width: 100%;
+                height: 0.2rem;
+                background-color: var(--color-white);
+                transition: transform 0.2s ease-in-out;
+            }
+        }
+
+        &__hamburger.active {
+            .header__hamburger__line:first-child {
+                transform: rotate(45deg) translate(7px, 7px);
+            }
+            .header__hamburger__line:nth-child(2) {
+                display: none;
+            }
+            .header__hamburger__line:last-child {
+                transform: rotate(-45deg) translate(3px, -3px);
+            }
+        }
+
+        &__nav {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            top: 10rem;
+            background-color: var(--color-white);
+            padding: 3rem;
+            width: 85vw;
+            transition: all .5s ease-in-out;
+            opacity: 0;
+            visibility: hidden;
+
+            &__list {
+                flex-direction: column;
+
+                li {
+                    margin-right: 0;
+                    margin-bottom: 3rem;
+
+                    a {
+                        color: var(--color-desaturated-blue-dark);
+                        font-size: 1.8rem;
+                    }
+                }
+                
+                li:last-child {
+                    margin-bottom: 0;
+                    background-color: var(--color-yellow);
+                }
+            }
+        }
+
+        &__nav::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: -2rem;
+            border-width: 2rem;
+            border-style: solid;
+            border-color: transparent var(--color-white) transparent transparent;
+        }
+
+        &__nav.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) scale(1);
+        }
+    }
+}

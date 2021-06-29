@@ -1,0 +1,63 @@
+body {
+    font-family: 'Barlow', sans-serif;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Fraunces', serif;
+}
+
+a {
+    text-decoration: none;
+    font-size: clamp(1.8rem, calc(0.5rem + 0.5vw), 2rem);
+}
+
+a:active {
+    color: inherit;
+}
+
+a:focus {
+    outline-color: var(--color-yellow);
+    outline-style: dashed;
+    outline-offset: 0.4rem;
+    outline-width: 0.2rem;
+}
+
+a:focus:not(:focus-visible) {
+    outline: none;
+}
+
+li {
+    list-style: none;
+}
+
+picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: [container-start] 1fr [center-start] repeat(6, minmax(min-content, 24rem)) [center-end] 1fr [container-end];
+    grid-template-rows: 100vh repeat(7, min-content);
+}
+
+// Custom Scrollbar
+
+::-webkit-scrollbar {
+    width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-yellow);
+    border-radius: 0.5rem;
+}
